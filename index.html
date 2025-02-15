@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewelry Product Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 220px;
+        }
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .quantity {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .quantity span {
+            font-size: 18px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <img src="../jewellery-shop-project/images/category-page-images/rings.avif" alt="Jewelry 1">
+            <h2>Gold Necklace</h2>
+            <p>$200.00</p>
+            <div class="quantity">
+                <button class="decrement" disabled>-</button>
+                <span class="quantity-value">1</span>
+                <button class="increment">+</button>
+            </div>
+        </div>
+      
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll(".card").forEach(card => {
+            const decrementBtn = card.querySelector(".decrement");
+            const incrementBtn = card.querySelector(".increment");
+            const quantitySpan = card.querySelector(".quantity-value");
+            let quantity = 1;
+
+            incrementBtn.addEventListener("click", () => {
+                quantity++;
+                quantitySpan.textContent = quantity;
+                decrementBtn.disabled = quantity === 1;
+            });
+
+            decrementBtn.addEventListener("click", () => {
+                if (quantity > 1) {
+                    quantity--;
+                    quantitySpan.textContent = quantity;
+                    decrementBtn.disabled = quantity === 1;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
